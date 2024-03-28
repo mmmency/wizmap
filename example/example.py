@@ -31,11 +31,12 @@ plt.rcParams['figure.dpi'] = 300
 
 import os
 #os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-   
-with open(r'/home/mxma/project/llm-attacks/experiments/results/individual_behavior_controls.json','r',encoding = 'utf-8') as f:
-    data = json.load(f)
-
-data_prompt = data['controls']
+file_path = "/home/mxma/project/llm-attacks/data/advbench/harmful_behaviors.csv" 
+#r'/home/mxma/project/llm-attacks/experiments/results/individual_behavior_controls.json'
+# with open(file_path,'r',encoding = 'utf-8') as f:
+#     data = json.load(f)
+data = pd.read_csv(file_path)
+data_prompt = data['goal'].values.tolist()#['controls']
 
 print('Loaded', len(data_prompt), 'prompts.')
 
